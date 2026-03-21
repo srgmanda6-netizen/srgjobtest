@@ -3,72 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मेरी पहली GitHub वेबसाइट</title>
+    <title>Sarkari Update & Quiz Center</title>
     <style>
-        /* डिज़ाइन (CSS) */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-            text-align: center;
-        }
-        header {
-            background-color: #24292e;
-            color: white;
-            padding: 50px 20px;
-        }
-        .container {
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            margin-top: -30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h1 { margin: 0; font-size: 2.5em; }
-        p { line-height: 1.6; font-size: 1.1em; }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 25px;
-            background-color: #2ea44f;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .btn:hover { background-color: #2c974b; }
-        footer {
-            margin-top: 50px;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #666;
-        }
+        body { font-family: Arial, sans-serif; margin: 0; background: #f0f2f5; }
+        header { background: #003366; color: white; padding: 20px; text-align: center; }
+        nav { background: #004080; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        
+        .main-container { max-width: 1000px; margin: 20px auto; display: flex; flex-wrap: wrap; gap: 20px; padding: 10px; }
+        
+        /* Job Card Style */
+        .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex: 1 1 300px; }
+        .card h2 { color: #d32f2f; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        .job-link { display: block; padding: 8px 0; border-bottom: 1px solid #f9f9f9; color: #333; text-decoration: none; }
+        .job-link:hover { color: #003366; background: #f0f0f0; }
+        .new-tag { background: red; color: white; font-size: 10px; padding: 2px 5px; border-radius: 3px; margin-left: 5px; }
+
+        /* Quiz Button */
+        .quiz-section { background: #fff; width: 100%; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+        .btn-quiz { background: #28a745; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-size: 1.2em; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>नमस्ते! आपका स्वागत है।</h1>
-        <p>यह मेरी पहली वेबसाइट है जो GitHub Pages पर होस्ट की गई है।</p>
-    </header>
+<header>
+    <h1>Sarkari Exam & Quiz Center</h1>
+    <p>लेटेस्ट सरकारी भर्ती और डेली क्विज़ यहाँ देखें</p>
+</header>
 
-    <div class="container">
-        <h2>मेरे बारे में (About Me)</h2>
-        <p>नमस्ते! मैं अपनी पहली फ्री वेबसाइट बनाना सीख रहा हूँ। GitHub एक बहुत ही बेहतरीन प्लेटफॉर्म है जहाँ हम अपनी कोडिंग स्किल्स दिखा सकते हैं।</p>
-        
-        <h3>मेरी स्किल्स:</h3>
-        <p>HTML • CSS • Web Design</p>
+<nav>
+    <a href="#">Home</a>
+    <a href="#latest-jobs">Latest Jobs</a>
+    <a href="#admit-card">Admit Card</a>
+    <a href="#quiz">Start Quiz</a>
+</nav>
 
-        <a href="mailto:your-email@gmail.com" class="btn">मुझसे संपर्क करें</a>
+<div class="main-container">
+    
+    <!-- Quiz Section -->
+    <div class="quiz-section" id="quiz">
+        <h2>आज का टेस्ट (Test Questions)</h2>
+        <p>अपनी तैयारी चेक करने के लिए नीचे दिए गए बटन पर क्लिक करें</p>
+        <a href="#" class="btn-quiz">Start Free Mock Test ✍️</a>
     </div>
 
-    <footer>
-        <p>© 2024 बनाई गई है - [आपका नाम]</p>
-    </footer>
+    <!-- Latest Jobs Section -->
+    <div class="card" id="latest-jobs">
+        <h2>Latest Jobs <span class="new-tag">NEW</span></h2>
+        <a href="#" class="job-link">➤ SSC GD Constable 2024 Online Form</a>
+        <a href="#" class="job-link">➤ UP Police Constable Re-Exam Date</a>
+        <a href="#" class="job-link">➤ Railway RPF SI/Constable Apply Online</a>
+        <a href="#" class="job-link">➤ Bihar BPSC Teacher Phase 3 Update</a>
+    </div>
+
+    <!-- Admit Card Section -->
+    <div class="card" id="admit-card">
+        <h2>Admit Card</h2>
+        <a href="#" class="job-link">➤ CTET July 2024 Admit Card</a>
+        <a href="#" class="job-link">➤ NEET UG 2024 City Intimation</a>
+        <a href="#" class="job-link">➤ SSC CHSL Tier 1 Admit Card</a>
+    </div>
+
+</div>
+
+<footer style="text-align:center; padding: 20px; color: #666;">
+    © 2026 YourSiteName.github.io | Education Purpose Only
+</footer>
 
 </body>
 </html>
