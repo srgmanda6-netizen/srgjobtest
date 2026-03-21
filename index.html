@@ -3,83 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarkari Update & Quiz Center</title>
+    <title>Sarkari App - Daily Updates</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: #f0f2f5; }
-        header { background: #003366; color: white; padding: 20px; text-align: center; }
-        nav { background: #004080; padding: 10px; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        :root {
+            --primary: #1a73e8;
+            --accent: #ff5722;
+            --bg: #f1f3f4;
+            --white: #ffffff;
+        }
+        body { font-family: 'Roboto', sans-serif; margin: 0; background: var(--bg); padding-bottom: 70px; }
         
-        .main-container { max-width: 1000px; margin: 20px auto; display: flex; flex-wrap: wrap; gap: 20px; padding: 10px; }
-        
-        /* Job Card Style */
-        .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex: 1 1 300px; }
-        .card h2 { color: #d32f2f; border-bottom: 2px solid #eee; padding-bottom: 5px; }
-        .job-link { display: block; padding: 8px 0; border-bottom: 1px solid #f9f9f9; color: #333; text-decoration: none; }
-        .job-link:hover { color: #003366; background: #f0f0f0; }
-        .new-tag { background: red; color: white; font-size: 10px; padding: 2px 5px; border-radius: 3px; margin-left: 5px; }
+        /* App Bar */
+        header { background: var(--primary); color: white; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        header h1 { margin: 0; font-size: 1.4em; }
 
-        /* Quiz Button */
-        .quiz-section { background: #fff; width: 100%; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
-        .btn-quiz { background: #28a745; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-size: 1.2em; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        /* Welcome Banner */
+        .banner { background: linear-gradient(135deg, #1a73e8, #0d47a1); color: white; padding: 25px 15px; text-align: center; margin-bottom: 15px; }
+        .btn-quiz { background: var(--accent); color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px; display: inline-block; font-weight: bold; margin-top: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+
+        /* Cards Layout */
+        .container { padding: 10px; }
+        .section-title { font-size: 1.1em; color: #333; margin: 15px 5px 10px; font-weight: bold; display: flex; align-items: center; }
+        .section-title span { background: var(--accent); width: 4px; height: 18px; margin-right: 8px; border-radius: 2px; }
+
+        .card { background: var(--white); border-radius: 12px; margin-bottom: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .job-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #eee; text-decoration: none; color: #333; transition: 0.2s; }
+        .job-item:last-child { border-bottom: none; }
+        .job-item:active { background: #f8f9fa; }
+        .icon { width: 35px; height: 35px; background: #e8f0fe; border-radius: 50%; margin-right: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: bold; }
+        .new-badge { background: #e3f2fd; color: #1a73e8; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: auto; text-transform: uppercase; font-weight: bold; }
+
+        /* Bottom Nav Bar */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: var(--white); display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #ddd; box-shadow: 0 -2px 5px rgba(0,0,0,0.05); }
+        .nav-item { text-align: center; text-decoration: none; color: #5f6368; font-size: 12px; flex: 1; }
+        .nav-item.active { color: var(--primary); }
+        .nav-icon { font-size: 20px; display: block; margin-bottom: 2px; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Sarkari Exam & Quiz Center</h1>
-    <p>लेटेस्ट सरकारी भर्ती और डेली क्विज़ यहाँ देखें</p>
+    <h1>Sarkari Update Center</h1>
 </header>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#latest-jobs">Latest Jobs</a>
-    <a href="#admit-card">Admit Card</a>
-    <a href="#results">Result</a>
-    <a href="#quiz">Start Quiz</a>
-</nav>
+<div class="banner">
+    <div style="font-size: 1.2em; font-weight: bold;">Daily Test Series 2026</div>
+    <p style="font-size: 0.9em; opacity: 0.9;">आज का फ्री मॉक टेस्ट अभी शुरू करें!</p>
+    <a href="quiz.html" class="btn-quiz">START QUIZ ✍️</a>
+</div>
 
-<div class="main-container">
+<div class="container">
     
-    <!-- Quiz Section -->
-    <div class="quiz-section" id="quiz">
-        <h2>आज का टेस्ट (Test Questions)</h2>
-        <p>अपनी तैयारी चेक करने के लिए नीचे दिए गए बटन पर क्लिक करें</p>
-        <a href="quiz.html" class="btn-quiz">Start Free Mock Test ✍️</a>
+    <div class="section-title"><span></span> LATEST JOBS</div>
+    <div class="card">
+        <a href="#" class="job-item">
+            <div class="icon">S</div>
+            <span>SSC GD Constable 2026 Form</span>
+            <span class="new-badge">New</span>
+        </a>
+        <a href="#" class="job-item">
+            <div class="icon">R</div>
+            <span>Railway RPF SI Recruitment</span>
+        </a>
+        <a href="#" class="job-item">
+            <div class="icon">U</div>
+            <span>UP Police Constable Update</span>
+        </a>
     </div>
 
-    <!-- Latest Jobs Section -->
-    <div class="card" id="latest-jobs">
-        <h2>Latest Jobs <span class="new-tag">NEW</span></h2>
-        <a href="#" class="job-link">➤ SSC GD Constable 2024 Online Form</a>
-        <a href="#" class="job-link">➤ UP Police Constable Re-Exam Date</a>
-        <a href="#" class="job-link">➤ Railway RPF SI/Constable Apply Online</a>
-        <a href="#" class="job-link">➤ Bihar BPSC Teacher Phase 3 Update</a>
+    <div class="section-title"><span></span> RESULTS</div>
+    <div class="card">
+        <a href="#" class="job-item" style="border-left: 4px solid #4caf50;">
+            <div class="icon" style="color:#4caf50">R</div>
+            <span>Bihar BPSC Phase 3 Result</span>
+        </a>
+        <a href="#" class="job-item">
+            <div class="icon">C</div>
+            <span>CTET July 2026 Score Card</span>
+        </a>
     </div>
-
-    <!-- Admit Card Section -->
-    <div class="card" id="admit-card">
-        <h2>Admit Card</h2>
-        <a href="#" class="job-link">➤ CTET July 2024 Admit Card</a>
-        <a href="#" class="job-link">➤ NEET UG 2024 City Intimation</a>
-        <a href="#" class="job-link">➤ SSC CHSL Tier 1 Admit Card</a>
-    </div>
-
-        <!-- Result Section -->
-    <div class="card" id="results">
-        <h2 style="color: #2e7d32;">Sarkari Result <span class="new-tag" style="background: #2e7d32;">UPDATED</span></h2>
-        <a href="#" class="job-link">➤ SSC GD Constable 2024 Final Result</a>
-        <a href="#" class="job-link">➤ UP Police Answer Key 2024 Out</a>
-        <a href="#" class="job-link">➤ Railway ALP Stage 1 Result</a>
-        <a href="#" class="job-link">➤ CBSE Class 10th/12th Result Update</a>
-    </div>
-
 
 </div>
 
-<footer style="text-align:center; padding: 20px; color: #666;">
-    © 2026 YourSiteName.github.io | Education Purpose Only
-</footer>
+<!-- App-like Bottom Navigation -->
+<div class="bottom-nav">
+    <a href="index.html" class="nav-item active">
+        <span class="nav-icon">🏠</span>Home
+    </a>
+    <a href="#latest-jobs" class="nav-item">
+        <span class="nav-icon">💼</span>Jobs
+    </a>
+    <a href="quiz.html" class="nav-item">
+        <span class="nav-icon">📝</span>Quiz
+    </a>
+    <a href="#" class="nav-item">
+        <span class="nav-icon">👤</span>Contact
+    </a>
+</div>
 
 </body>
 </html>
