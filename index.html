@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STAX — The Future of Web Production</title>
+  <title>SRGjobtest — Education opens your future</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --teal: #4ecdc4;
@@ -144,21 +144,15 @@
       }
     }
 
-    /* Hero */
+    /* Hero — solid blue (no background image) */
     .hero {
       position: relative;
       min-height: 85vh;
+      min-height: 85svh;
       display: flex;
       align-items: center;
       padding: 8rem 0 12rem;
-      background: var(--dark) url("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1920&q=80") center / cover no-repeat;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(52, 73, 94, 0.88) 0%, rgba(52, 73, 94, 0.45) 55%, transparent 100%);
+      background: linear-gradient(160deg, #0c2d5c 0%, #1a4f8c 42%, #2563b8 100%);
     }
 
     .hero .container {
@@ -167,13 +161,14 @@
     }
 
     .hero-content {
-      max-width: 560px;
+      max-width: min(720px, 100%);
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(1.75rem, 4.2vw, 2.65rem);
       color: var(--white);
       margin-bottom: 1rem;
+      font-weight: 700;
     }
 
     .hero p {
@@ -192,8 +187,15 @@
 
     .feature-cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.75rem;
+      max-width: 920px;
+      margin-inline: auto;
+    }
+
+    .feature-card p[lang="hi"] {
+      font-family: "Noto Sans Devanagari", sans-serif;
+      line-height: 1.65;
     }
 
     @media (max-width: 768px) {
@@ -254,10 +256,38 @@
       flex-wrap: wrap;
     }
 
-    .cta-bar p {
+    .cta-bar-copy {
+      flex: 1;
+      min-width: min(100%, 260px);
+      font-family: "Noto Sans Devanagari", sans-serif;
+    }
+
+    .cta-bar__lead {
       color: var(--white);
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-size: clamp(1.2rem, 2.8vw, 1.7rem);
+      font-weight: 700;
+      line-height: 1.35;
+      margin: 0 0 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .cta-bar__detail {
+      color: rgba(255, 255, 255, 0.93);
+      font-size: clamp(0.95rem, 2vw, 1.12rem);
+      font-weight: 500;
+      line-height: 1.65;
+      margin: 0;
+      max-width: 42rem;
+    }
+
+    .cta-bar__detail strong {
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .cta-bar__detail .cta-bar__accent {
+      color: #fff8a8;
+      font-weight: 700;
     }
 
     /* Two-column sections */
@@ -298,6 +328,208 @@
       width: 100%;
       border-radius: 4px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Popular Exams hub (tabbed grid) */
+    .exam-hub {
+      background: #fff;
+    }
+
+    .exam-hub__head {
+      margin-bottom: 1.75rem;
+    }
+
+    .exam-hub__head h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .exam-hub__head p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 36rem;
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .exam-tabs {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0.15rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0;
+      border-bottom: 1px solid #e8ecef;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+
+    .exam-tabs button {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      padding: 0.65rem 0.75rem;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.2;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 4.75rem;
+      max-width: 9.5rem;
+    }
+
+    .exam-tabs__label {
+      font-size: 0.74rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .exam-tabs__count {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #94a3b8;
+      margin-top: 0.2rem;
+    }
+
+    .exam-tabs button:hover {
+      color: var(--text);
+    }
+
+    .exam-tabs button:hover .exam-tabs__count {
+      color: #7c8ea0;
+    }
+
+    .exam-tabs button.active {
+      color: #2563eb;
+      border-bottom-color: #2563eb;
+    }
+
+    .exam-tabs button.active .exam-tabs__count {
+      color: #64748b;
+    }
+
+    .exam-panel {
+      display: none;
+      animation: examFade 0.25s ease;
+    }
+
+    .exam-panel.active {
+      display: block;
+    }
+
+    .exam-hub__empty {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1rem;
+      padding: 2.5rem 1rem;
+      margin: 0;
+      border: 1px dashed #e8ecef;
+      border-radius: 8px;
+      background: #fafbfc;
+    }
+
+    @keyframes examFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .exam-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .exam-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .exam-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .exam-card {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 1.1rem;
+      background: var(--white);
+      border: 1px solid #e8ecef;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      transition: box-shadow 0.2s, border-color 0.2s;
+      min-height: 3.5rem;
+    }
+
+    .exam-card:hover {
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.07);
+      border-color: #dce3ea;
+    }
+
+    .exam-card__logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+      text-align: center;
+      line-height: 1.15;
+      padding: 2px;
+    }
+
+    .exam-card__name {
+      flex: 1;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .exam-card__chevron {
+      flex-shrink: 0;
+      color: #bdc3c7;
+      display: flex;
+    }
+
+    .exam-card:hover .exam-card__chevron {
+      color: #95a5a6;
+    }
+
+    .exam-card--more {
+      justify-content: center;
+      gap: 0.35rem;
+      color: #2563eb;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .exam-card--more .exam-card__chevron {
+      color: #2563eb;
+    }
+
+    .exam-card--more:hover {
+      background: #f0f7ff;
+      border-color: #bfdbfe;
     }
 
     /* Icon grid */
@@ -661,7 +893,7 @@
 <body>
   <header class="site-header">
     <div class="container nav-inner">
-      <a href="#" class="logo">STAX</a>
+      <a href="#" class="logo">SRGjobtest</a>
       <ul class="nav-links">
         <li><a href="#">Home</a></li>
         <li><a href="#">Pages</a></li>
@@ -676,8 +908,8 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>The Future of Web Production</h1>
-        <p>Build fast, flexible sites with a clean stack. We help teams ship polished experiences without the bloat.</p>
+        <h1>Education is the key to unlocking the golden doors of your future</h1>
+        <p>Get your key to success with us</p>
         <a href="#" class="btn btn-teal">Get Started</a>
       </div>
     </div>
@@ -689,46 +921,321 @@
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M4 6h16M4 12h10M4 18h16" />
         </svg>
-        <h3>Flexible</h3>
-        <p>Adapt layouts and content blocks to match your brand without fighting the framework.</p>
-        <a href="#" class="link-teal">Learn More →</a>
+        <h3>Popular Exams</h3>
+        <p lang="hi">भारत की सभी सरकारी नौकरियों की परीक्षाओं की जानकारी यहाँ देखें।</p>
+        <a href="#" class="btn btn-teal">View All</a>
       </article>
       <article class="feature-card">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <path d="M3 9h18M9 21V9" />
+          <path d="M9 11l3 3L22 4" />
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
         </svg>
-        <h3>Platform</h3>
-        <p>One cohesive system for landing pages, blogs, and commerce-ready storefronts.</p>
-        <a href="#" class="link-teal">Learn More →</a>
-      </article>
-      <article class="feature-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-        </svg>
-        <h3>Performance</h3>
-        <p>Lightweight markup and assets so your pages load quickly on every device.</p>
-        <a href="#" class="link-teal">Learn More →</a>
+        <h3>Test</h3>
+        <p lang="hi">अपनी तैयारी को मजबूत बनाएं! भारत की प्रमुख सरकारी नौकरियों के लिए बेस्ट PYQs और टेस्ट सीरीज़ यहाँ पाएँ</p>
+        <a href="#" class="btn btn-teal">View All</a>
       </article>
     </div>
   </div>
 
   <section class="cta-bar">
     <div class="container cta-bar-inner">
-      <p>Ready to launch your next project with STAX?</p>
-      <a href="#" class="btn btn-teal">Buy Now</a>
+      <div class="cta-bar-copy">
+        <p class="cta-bar__lead">पढ़ाई का सुनहरा मौका!</p>
+        <p class="cta-bar__detail">
+          सभी कोर्सेस पर पाइए <strong>फ़्लैट 50% डिस्काउंट</strong>। कोर्स जॉइन करने से पहले देखें
+          <span class="cta-bar__accent">2 घंटे का डेमो</span> — <strong>बिल्कुल फ़्री</strong>।
+        </p>
+      </div>
+      <a href="https://t.me/WereWolfByNight0" class="btn btn-teal" target="_blank" rel="noopener noreferrer">फ्री डेमो देखें</a>
     </div>
   </section>
 
-  <section class="section-pad">
-    <div class="container split">
-      <div class="split-media">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Dashboard mockup" />
+  <section class="section-pad exam-hub">
+    <div class="container">
+      <div class="exam-hub__head">
+        <h2>Popular Exams</h2>
+        <p>Get exam-ready with concepts, questions and study notes as per the latest pattern.</p>
       </div>
-      <div class="split-text">
-        <h2>Built for one thing</h2>
-        <p>Focus on delivering value to your customers. Our patterns keep structure predictable so you can iterate on copy, imagery, and CTAs with confidence.</p>
-        <a href="#" class="btn btn-teal">Learn More</a>
+
+      <div class="exam-tabs" role="tablist" aria-label="Exam categories">
+        <button type="button" role="tab" class="active" data-tab="ssc" aria-selected="true"><span class="exam-tabs__label">SSC Exams</span><span class="exam-tabs__count">81 Exams</span></button>
+        <button type="button" role="tab" data-tab="banking" aria-selected="false"><span class="exam-tabs__label">Banking Exams</span><span class="exam-tabs__count">79 Exams</span></button>
+        <button type="button" role="tab" data-tab="teaching" aria-selected="false"><span class="exam-tabs__label">Teaching Exams</span><span class="exam-tabs__count">164 Exams</span></button>
+        <button type="button" role="tab" data-tab="civil" aria-selected="false"><span class="exam-tabs__label">Civil Services Exam</span><span class="exam-tabs__count">30 Exams</span></button>
+        <button type="button" role="tab" data-tab="railways" aria-selected="false"><span class="exam-tabs__label">Railways Exams</span><span class="exam-tabs__count">33 Exams</span></button>
+        <button type="button" role="tab" data-tab="engineering" aria-selected="false"><span class="exam-tabs__label">Engineering Recruitment Exams</span><span class="exam-tabs__count">278 Exams</span></button>
+        <button type="button" role="tab" data-tab="defence" aria-selected="false"><span class="exam-tabs__label">Defence Exams</span><span class="exam-tabs__count">73 Exams</span></button>
+        <button type="button" role="tab" data-tab="state-govt" aria-selected="false"><span class="exam-tabs__label">State Govt. Exams</span><span class="exam-tabs__count">651 Exams</span></button>
+        <button type="button" role="tab" data-tab="police" aria-selected="false"><span class="exam-tabs__label">Police Exams</span><span class="exam-tabs__count">65 Exams</span></button>
+        <button type="button" role="tab" data-tab="insurance" aria-selected="false"><span class="exam-tabs__label">Insurance Exams</span><span class="exam-tabs__count">24 Exams</span></button>
+        <button type="button" role="tab" data-tab="nursing" aria-selected="false"><span class="exam-tabs__label">Nursing Exams</span><span class="exam-tabs__count">67 Exams</span></button>
+        <button type="button" role="tab" data-tab="other-govt" aria-selected="false"><span class="exam-tabs__label">Other Govt. Exams</span><span class="exam-tabs__count">201 Exams</span></button>
+        <button type="button" role="tab" data-tab="nra-cet" aria-selected="false"><span class="exam-tabs__label">NRA CET</span><span class="exam-tabs__count">21 Exams</span></button>
+        <button type="button" role="tab" data-tab="pg-entrance" aria-selected="false"><span class="exam-tabs__label">PG Entrance Exams</span><span class="exam-tabs__count">31 Exams</span></button>
+        <button type="button" role="tab" data-tab="campus" aria-selected="false"><span class="exam-tabs__label">Campus Placement</span><span class="exam-tabs__count">12 Exams</span></button>
+        <button type="button" role="tab" data-tab="marketing" aria-selected="false"><span class="exam-tabs__label">Marketing</span><span class="exam-tabs__count">1 Exams</span></button>
+        <button type="button" role="tab" data-tab="mba" aria-selected="false"><span class="exam-tabs__label">MBA Entrance Exam</span><span class="exam-tabs__count">5 Exams</span></button>
+        <button type="button" role="tab" data-tab="cuet" aria-selected="false"><span class="exam-tabs__label">CUET and UG Entrance</span><span class="exam-tabs__count">251 Exams</span></button>
+        <button type="button" role="tab" data-tab="professional-skills" aria-selected="false"><span class="exam-tabs__label">Professional Skills</span><span class="exam-tabs__count">1 Exams</span></button>
+        <button type="button" role="tab" data-tab="software-dev" aria-selected="false"><span class="exam-tabs__label">Software Development</span><span class="exam-tabs__count">1 Exams</span></button>
+        <button type="button" role="tab" data-tab="data-science" aria-selected="false"><span class="exam-tabs__label">Data Science &amp; Analytics</span><span class="exam-tabs__count">3 Exams</span></button>
+        <button type="button" role="tab" data-tab="accounting" aria-selected="false"><span class="exam-tabs__label">Accounting and Commerce</span><span class="exam-tabs__count">12 Exams</span></button>
+        <button type="button" role="tab" data-tab="management" aria-selected="false"><span class="exam-tabs__label">Management</span><span class="exam-tabs__count">0 Exams</span></button>
+        <button type="button" role="tab" data-tab="judiciary" aria-selected="false"><span class="exam-tabs__label">Judiciary Exams</span><span class="exam-tabs__count">22 Exams</span></button>
+        <button type="button" role="tab" data-tab="regulatory" aria-selected="false"><span class="exam-tabs__label">Regulatory Body Exams</span><span class="exam-tabs__count">8 Exams</span></button>
+        <button type="button" role="tab" data-tab="dibo" aria-selected="false"><span class="exam-tabs__label">DIBO</span><span class="exam-tabs__count">0 Exams</span></button>
+      </div>
+
+      <div class="exam-panels">
+        <div class="exam-panel active" id="panel-ssc" role="tabpanel" data-tabpanel="ssc">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#1e40af">SSC</span><span class="exam-card__name">SSC CGL</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#1d4ed8">SSC</span><span class="exam-card__name">SSC CHSL</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#2563eb">SSC</span><span class="exam-card__name">SSC MTS</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#3b82f6">SSC</span><span class="exam-card__name">SSC GD Constable</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#1e3a8a">SSC</span><span class="exam-card__name">SSC Stenographer</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#1d4ed8">SSC</span><span class="exam-card__name">SSC Selection Post</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#172554">DP</span><span class="exam-card__name">Delhi Police Constable</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#1e40af">SSC</span><span class="exam-card__name">SSC CPO</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-banking" role="tabpanel" data-tabpanel="banking">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0f766e">IBPS</span><span class="exam-card__name">IBPS PO</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0d9488">IBPS</span><span class="exam-card__name">IBPS Clerk</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0369a1">SBI</span><span class="exam-card__name">SBI PO</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0284c7">SBI</span><span class="exam-card__name">SBI Clerk</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#7c3aed">RBI</span><span class="exam-card__name">RBI Assistant</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#4f46e5">RRB</span><span class="exam-card__name">IBPS RRB PO</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#4338ca">RRB</span><span class="exam-card__name">IBPS RRB Clerk</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0e7490">NIACL</span><span class="exam-card__name">NIACL Assistant</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-teaching" role="tabpanel" data-tabpanel="teaching">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#b45309">CTET</span><span class="exam-card__name">CTET</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#c2410c">UP</span><span class="exam-card__name">UPTET / Super TET</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#ca8a04">REET</span><span class="exam-card__name">REET</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#a16207">DSSSB</span><span class="exam-card__name">DSSSB TGT / PGT</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#854d0e">KVS</span><span class="exam-card__name">KVS / NVS</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#713f12">UGC</span><span class="exam-card__name">UGC NET</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-civil" role="tabpanel" data-tabpanel="civil">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#991b1b">UPSC</span><span class="exam-card__name">UPSC CSE (IAS)</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#b91c1c">UPSC</span><span class="exam-card__name">UPSC CAPF</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#7f1d1d">UPSC</span><span class="exam-card__name">UPSC CDS</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#9f1239">PSC</span><span class="exam-card__name">State PSC</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#be123c">BPSC</span><span class="exam-card__name">BPSC</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-railways" role="tabpanel" data-tabpanel="railways">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0c4a6e">RRB</span><span class="exam-card__name">RRB NTPC</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#075985">RRB</span><span class="exam-card__name">RRB Group D</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0369a1">RRB</span><span class="exam-card__name">RRB JE</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#164e63">RRB</span><span class="exam-card__name">RRB ALP</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#155e75">RRB</span><span class="exam-card__name">RRB Technician</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-engineering" role="tabpanel" data-tabpanel="engineering">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#4338ca">GATE</span><span class="exam-card__name">GATE</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#1e40af">SSC</span><span class="exam-card__name">SSC JE</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0c4a6e">RRB</span><span class="exam-card__name">RRB JE</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#1e3a8a">STATE</span><span class="exam-card__name">State AE / JE</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-defence" role="tabpanel" data-tabpanel="defence">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#14532d">NDA</span><span class="exam-card__name">NDA</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#166534">CDS</span><span class="exam-card__name">CDS</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#15803d">AFCAT</span><span class="exam-card__name">AFCAT</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#16a34a">CAPF</span><span class="exam-card__name">CAPF Assistant Commandant</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#14532d">AGNIVEER</span><span class="exam-card__name">Agniveer (Army / Navy / IAF)</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-state-govt" role="tabpanel" data-tabpanel="state-govt">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#7c2d12">UP</span><span class="exam-card__name">UPPSC</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#9a3412">MP</span><span class="exam-card__name">MPPSC</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#c2410c">UK</span><span class="exam-card__name">UKPSC</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#b45309">RJ</span><span class="exam-card__name">RPSC</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#92400e">BR</span><span class="exam-card__name">BPSC</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#78350f">MH</span><span class="exam-card__name">MPSC</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-police" role="tabpanel" data-tabpanel="police">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#1e3a8a">SI</span><span class="exam-card__name">UP Police SI</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#172554">CON</span><span class="exam-card__name">State Police Constable</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#312e81">CISF</span><span class="exam-card__name">CISF Constable / HC</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#3730a3">CRPF</span><span class="exam-card__name">CRPF Constable</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#1e1b4b">ITBP</span><span class="exam-card__name">ITBP / BSF trades</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-insurance" role="tabpanel" data-tabpanel="insurance">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0d9488">LIC</span><span class="exam-card__name">LIC AAO / AE</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0f766e">LIC</span><span class="exam-card__name">LIC Assistant</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#115e59">NIACL</span><span class="exam-card__name">NIACL Assistant</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#134e4a">NICL</span><span class="exam-card__name">NICL AO</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-nursing" role="tabpanel" data-tabpanel="nursing">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#be185d">AIIMS</span><span class="exam-card__name">AIIMS NORCET</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#db2777">ESIC</span><span class="exam-card__name">ESIC Staff Nurse</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#ec4899">CHO</span><span class="exam-card__name">Community Health Officer</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#9d174d">RRC</span><span class="exam-card__name">Railway Staff Nurse</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-other-govt" role="tabpanel" data-tabpanel="other-govt">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#854d0e">FCI</span><span class="exam-card__name">FCI Recruitment</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#a16207">EPFO</span><span class="exam-card__name">EPFO SSA / Steno</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#ca8a04">IB</span><span class="exam-card__name">Intelligence Bureau ACIO</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#eab308">NVS</span><span class="exam-card__name">KVS / NVS non-teaching</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-nra-cet" role="tabpanel" data-tabpanel="nra-cet">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#4338ca">NRA</span><span class="exam-card__name">NRA CET (Foundation)</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#4f46e5">NRA</span><span class="exam-card__name">NRA CET Graduate Level</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#6366f1">NRA</span><span class="exam-card__name">NRA CET 10+2 Level</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-pg-entrance" role="tabpanel" data-tabpanel="pg-entrance">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#7c3aed">GATE</span><span class="exam-card__name">GATE (PG)</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#6d28d9">JAM</span><span class="exam-card__name">IIT JAM</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#5b21b6">JEST</span><span class="exam-card__name">JEST / TIFR</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-campus" role="tabpanel" data-tabpanel="campus">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0369a1">TCS</span><span class="exam-card__name">TCS National Qualifier Test</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0284c7">INFY</span><span class="exam-card__name">Infosys InfyTQ</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0ea5e9">Wipro</span><span class="exam-card__name">Wipro NLTH</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-marketing" role="tabpanel" data-tabpanel="marketing">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#db2777">MKT</span><span class="exam-card__name">Digital Marketing Certification</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-mba" role="tabpanel" data-tabpanel="mba">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#b45309">CAT</span><span class="exam-card__name">CAT</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#c2410c">XAT</span><span class="exam-card__name">XAT</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#ea580c">SNAP</span><span class="exam-card__name">SNAP</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#f97316">MAT</span><span class="exam-card__name">MAT / CMAT</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-cuet" role="tabpanel" data-tabpanel="cuet">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#1d4ed8">CUET</span><span class="exam-card__name">CUET UG</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#2563eb">CUET</span><span class="exam-card__name">CUET PG</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#3b82f6">IPU</span><span class="exam-card__name">IPU CET</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#60a5fa">UG</span><span class="exam-card__name">State UG Entrance</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-professional-skills" role="tabpanel" data-tabpanel="professional-skills">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#475569">PRO</span><span class="exam-card__name">Workplace Communication Skills</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-software-dev" role="tabpanel" data-tabpanel="software-dev">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0f172a">DEV</span><span class="exam-card__name">Full Stack Developer Track</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-data-science" role="tabpanel" data-tabpanel="data-science">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#0e7490">DS</span><span class="exam-card__name">Data Analyst Path</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#155e75">ML</span><span class="exam-card__name">Machine Learning Basics</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#164e63">SQL</span><span class="exam-card__name">SQL for Analytics</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-accounting" role="tabpanel" data-tabpanel="accounting">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#92400e">CA</span><span class="exam-card__name">CA Foundation</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#a16207">CMA</span><span class="exam-card__name">CMA Foundation</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#b45309">CS</span><span class="exam-card__name">CS Executive</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#ca8a04">B.Com</span><span class="exam-card__name">UG Commerce Entrances</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-management" role="tabpanel" data-tabpanel="management">
+          <p class="exam-hub__empty">इस श्रेणी में अभी <strong>0 Exams</strong> दिख रहे हैं। जल्द ही नए कोर्स जोड़े जाएँगे।</p>
+        </div>
+
+        <div class="exam-panel" id="panel-judiciary" role="tabpanel" data-tabpanel="judiciary">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#4c1d95">APO</span><span class="exam-card__name">Assistant Prosecution Officer</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#5b21b6">CJ</span><span class="exam-card__name">Civil Judge (Junior Division)</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#6d28d9">HJS</span><span class="exam-card__name">Higher Judicial Service</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-regulatory" role="tabpanel" data-tabpanel="regulatory">
+          <div class="exam-grid">
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#7c3aed">RBI</span><span class="exam-card__name">RBI Grade B</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#6d28d9">NABARD</span><span class="exam-card__name">NABARD Grade A</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#5b21b6">SEBI</span><span class="exam-card__name">SEBI Grade A</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card"><span class="exam-card__logo" style="background:#4c1d95">IRDAI</span><span class="exam-card__name">IRDAI Assistant Manager</span><span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+            <a href="#" class="exam-card exam-card--more">Explore all exams<span class="exam-card__chevron"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <div class="exam-panel" id="panel-dibo" role="tabpanel" data-tabpanel="dibo">
+          <p class="exam-hub__empty">DIBO श्रेणी में अभी <strong>0 Exams</strong> लिस्ट हैं। अपडेट के लिए बने रहें।</p>
+        </div>
       </div>
     </div>
   </section>
@@ -869,7 +1376,7 @@
   <section class="section-pad" style="background: #fafbfc;">
     <div class="container testimonial-split">
       <div>
-        <p class="quote">“I love STAX — clean structure, fast handoff, and a look our clients actually compliment.”</p>
+        <p class="quote">“I love SRGjobtest — clean structure, fast handoff, and a look our clients actually compliment.”</p>
         <a href="#" class="btn btn-teal">Read More</a>
       </div>
       <div>
@@ -986,7 +1493,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 STAX. All rights reserved.</span>
+        <span>© 2025 SRGjobtest. All rights reserved.</span>
         <div class="social">
           <a href="#" aria-label="Twitter">Twitter</a>
           <a href="#" aria-label="Facebook">Facebook</a>
@@ -995,5 +1502,24 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll(".exam-tabs button[data-tab]");
+      var panels = document.querySelectorAll(".exam-panel[data-tabpanel]");
+      tabs.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var id = btn.getAttribute("data-tab");
+          tabs.forEach(function (b) {
+            var on = b === btn;
+            b.classList.toggle("active", on);
+            b.setAttribute("aria-selected", on ? "true" : "false");
+          });
+          panels.forEach(function (p) {
+            p.classList.toggle("active", p.getAttribute("data-tabpanel") === id);
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
