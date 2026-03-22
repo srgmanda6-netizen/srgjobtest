@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Government Exams — SRGjobtest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #16a34a;
+      --green-dark: #15803d;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --bg: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Open Sans", sans-serif;
+      color: var(--text);
+      background: #f8fafc;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .top-bar {
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: 0.65rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .top-bar__inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .back-link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    .brand-mini {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .page-wrap {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 1rem 2.5rem;
+    }
+
+    .promo-banner {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      color: #fff;
+      padding: 1rem 1.1rem;
+      border-radius: 0 0 12px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin: 0 -1rem 1.25rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .promo-banner p {
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .btn-trial {
+      flex-shrink: 0;
+      background: var(--blue);
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      font-size: 0.72rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-trial:hover { background: var(--blue-dark); }
+
+    .search-wrap {
+      position: relative;
+      margin-bottom: 1.75rem;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      padding: 0.9rem 2.75rem 0.9rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: var(--bg);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .search-wrap input::placeholder { color: #94a3b8; }
+
+    .search-wrap svg {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      pointer-events: none;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-head h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .section-head .arrow-gold {
+      color: #ca8a04;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .upcoming-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+      margin-bottom: 2rem;
+    }
+
+    .up-card {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 0.65rem;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.25;
+      transition: box-shadow 0.2s;
+    }
+
+    .up-card:hover {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+
+    .up-card__dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .up-card__dot .favicon-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+      display: block;
+    }
+
+    .explore-block {
+      background: var(--bg);
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .explore-block__head {
+      padding: 1.15rem 1rem 0.85rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .explore-block__head h3 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .explore-block__head p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .tb-cat-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.95rem 1rem;
+      border-bottom: 1px solid var(--line);
+      transition: background 0.15s;
+    }
+
+    .tb-cat-row:last-child { border-bottom: none; }
+
+    .tb-cat-row:hover { background: #f8fafc; }
+
+    .tb-cat-row[hidden] { display: none !important; }
+
+    .tb-cat-row__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .tb-cat-row__icon .favicon-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 5px;
+      display: block;
+    }
+
+    .tb-cat-row__text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tb-cat-row__name {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: block;
+    }
+
+    .tb-cat-row__count {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+      display: block;
+    }
+
+    .tb-cat-row__chev {
+      flex-shrink: 0;
+      color: #cbd5e1;
+      display: flex;
+    }
+
+    @media (min-width: 640px) {
+      .page-wrap { max-width: 640px; }
+      .top-bar__inner { max-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="top-bar__inner">
+      <a href="index.html" class="back-link">← Home</a>
+      <a href="index.html" class="brand-mini">SRGjobtest</a>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="promo-banner">
+      <p>Access Live Classes, Mocks, PYP &amp; Notes for 270+ Exams!</p>
+      <a href="https://t.me/WereWolfByNight0" class="btn-trial" target="_blank" rel="noopener noreferrer">Start Free Trial</a>
+    </div>
+
+    <div class="search-wrap">
+      <input type="search" id="exam-search" placeholder="Search for your exam" autocomplete="off" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+    </div>
+
+    <div class="section-head">
+      <h2>Upcoming and Popular Exams</h2>
+      <span class="arrow-gold" aria-hidden="true">›</span>
+    </div>
+    <div class="upcoming-grid">
+      <a href="#" class="up-card"><span class="up-card__dot" data-favicon="up.gov.in"></span> UP Lekhpal</a>
+      <a href="#" class="up-card"><span class="up-card__dot" data-favicon="up.gov.in"></span> UP Police Constable</a>
+      <a href="#" class="up-card"><span class="up-card__dot" data-favicon="indianrailways.gov.in"></span> RRB NTPC</a>
+      <a href="#" class="up-card"><span class="up-card__dot" data-favicon="ssc.nic.in"></span> SSC CGL</a>
+      <a href="#" class="up-card"><span class="up-card__dot" data-favicon="up.gov.in"></span> UP Homeguard</a>
+      <a href="#" class="up-card"><span class="up-card__dot" data-favicon="indiannavy.nic.in"></span> Navy MR Agniveer</a>
+      <a href="#" class="up-card"><span class="up-card__dot" data-favicon="indiannavy.nic.in"></span> Navy SSR Agniveer</a>
+      <a href="#" class="up-card"><span class="up-card__dot" data-favicon="joinindianarmy.nic.in"></span> Indian Army Nursing Assistant</a>
+    </div>
+
+    <div class="explore-block">
+      <div class="explore-block__head">
+        <h3>690+ Explore all Exams</h3>
+        <p>Get exam-ready with concepts, questions and study notes as per the latest pattern</p>
+      </div>
+      <nav class="tb-cat-list" aria-label="All exam categories">
+        <a href="#" class="tb-cat-row" data-search="ssc exams"><span class="tb-cat-row__icon" data-favicon="ssc.nic.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">SSC Exams</span><span class="tb-cat-row__count">81 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="banking"><span class="tb-cat-row__icon" data-favicon="ibps.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Banking Exams</span><span class="tb-cat-row__count">79 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="teaching"><span class="tb-cat-row__icon" data-favicon="kvs.gov.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Teaching Exams</span><span class="tb-cat-row__count">164 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="civil services"><span class="tb-cat-row__icon" data-favicon="upsc.gov.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Civil Services Exam</span><span class="tb-cat-row__count">30 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="railways"><span class="tb-cat-row__icon" data-favicon="indianrailways.gov.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Railways Exams</span><span class="tb-cat-row__count">33 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="engineering"><span class="tb-cat-row__icon" data-favicon="gate.iitk.ac.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Engineering Recruitment Exams</span><span class="tb-cat-row__count">111 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="defence"><span class="tb-cat-row__icon" data-favicon="joinindianarmy.nic.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Defence Exams</span><span class="tb-cat-row__count">78 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="state government"><span class="tb-cat-row__icon" data-favicon="india.gov.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">State Govt. Exams</span><span class="tb-cat-row__count">551 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="police"><span class="tb-cat-row__icon" data-favicon="uppolice.gov.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Police Exams</span><span class="tb-cat-row__count">83 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="insurance"><span class="tb-cat-row__icon" data-favicon="licindia.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Insurance Exams</span><span class="tb-cat-row__count">34 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="nursing"><span class="tb-cat-row__icon" data-favicon="aiims.edu"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Nursing Exams</span><span class="tb-cat-row__count">47 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="other government"><span class="tb-cat-row__icon" data-favicon="india.gov.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Other Govt. Exams</span><span class="tb-cat-row__count">70 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="nra cet"><span class="tb-cat-row__icon" data-favicon="nraje.gov.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">NRA CET</span><span class="tb-cat-row__count">2 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="pg entrance"><span class="tb-cat-row__icon" data-favicon="iitk.ac.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">PG Entrance Exams</span><span class="tb-cat-row__count">8 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="campus placement"><span class="tb-cat-row__icon" data-favicon="tcs.com"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Campus Placement</span><span class="tb-cat-row__count">12 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="marketing"><span class="tb-cat-row__icon" data-favicon="google.com"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Marketing</span><span class="tb-cat-row__count">1 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="mba"><span class="tb-cat-row__icon" data-favicon="iimcat.ac.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">MBA Entrance Exam</span><span class="tb-cat-row__count">4 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="cuet ug entrance"><span class="tb-cat-row__icon" data-favicon="cuet.samarth.ac.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">CUET and UG Entrance</span><span class="tb-cat-row__count">38 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="professional skills"><span class="tb-cat-row__icon" data-favicon="microsoft.com"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Professional Skills</span><span class="tb-cat-row__count">1 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="software development"><span class="tb-cat-row__icon" data-favicon="github.com"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Software Development</span><span class="tb-cat-row__count">1 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="data science analytics"><span class="tb-cat-row__icon" data-favicon="python.org"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Data Science &amp; Analytics</span><span class="tb-cat-row__count">3 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="accounting commerce"><span class="tb-cat-row__icon" data-favicon="icai.org"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Accounting and Commerce</span><span class="tb-cat-row__count">12 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="management"><span class="tb-cat-row__icon" data-favicon="aicte-india.org"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Management</span><span class="tb-cat-row__count">6 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="judiciary"><span class="tb-cat-row__icon" data-favicon="india.gov.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Judiciary Exams</span><span class="tb-cat-row__count">22 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="regulatory"><span class="tb-cat-row__icon" data-favicon="rbi.org.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">Regulatory Body Exams</span><span class="tb-cat-row__count">8 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+        <a href="#" class="tb-cat-row" data-search="drdo"><span class="tb-cat-row__icon" data-favicon="drdo.gov.in"></span><span class="tb-cat-row__text"><span class="tb-cat-row__name">DRDO</span><span class="tb-cat-row__count">6 Exams</span></span><span class="tb-cat-row__chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></span></a>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var input = document.getElementById("exam-search");
+      if (!input) return;
+      input.addEventListener("input", function () {
+        var q = input.value.trim().toLowerCase();
+        document.querySelectorAll(".tb-cat-row").forEach(function (row) {
+          var hay = (row.getAttribute("data-search") || "") + " " + row.textContent.toLowerCase();
+          row.hidden = q.length > 0 && hay.indexOf(q) === -1;
+        });
+      });
+    })();
+  </script>
+  <script src="exam-favicons.js"></script>
+</body>
+</html>
