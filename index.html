@@ -1,105 +1,999 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarkari App - Daily Updates</title>
-    <style>
-        :root {
-            --primary: #1a73e8;
-            --accent: #ff5722;
-            --bg: #f1f3f4;
-            --white: #ffffff;
-        }
-        body { font-family: 'Roboto', sans-serif; margin: 0; background: var(--bg); padding-bottom: 70px; }
-        
-        /* App Bar */
-        header { background: var(--primary); color: white; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        header h1 { margin: 0; font-size: 1.4em; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STAX — The Future of Web Production</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal: #4ecdc4;
+      --teal-dark: #3db8b0;
+      --dark: #34495e;
+      --text: #2c3e50;
+      --muted: #7f8c8d;
+      --white: #ffffff;
+      --light-bg: #f4f6f8;
+    }
 
-        /* Welcome Banner */
-        .banner { background: linear-gradient(135deg, #1a73e8, #0d47a1); color: white; padding: 25px 15px; text-align: center; margin-bottom: 15px; }
-        .btn-quiz { background: var(--accent); color: white; padding: 10px 20px; text-decoration: none; border-radius: 25px; display: inline-block; font-weight: bold; margin-top: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Cards Layout */
-        .container { padding: 10px; }
-        .section-title { font-size: 1.1em; color: #333; margin: 15px 5px 10px; font-weight: bold; display: flex; align-items: center; }
-        .section-title span { background: var(--accent); width: 4px; height: 18px; margin-right: 8px; border-radius: 2px; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .card { background: var(--white); border-radius: 12px; margin-bottom: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .job-item { display: flex; align-items: center; padding: 15px; border-bottom: 1px solid #eee; text-decoration: none; color: #333; transition: 0.2s; }
-        .job-item:last-child { border-bottom: none; }
-        .job-item:active { background: #f8f9fa; }
-        .icon { width: 35px; height: 35px; background: #e8f0fe; border-radius: 50%; margin-right: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: bold; }
-        .new-badge { background: #e3f2fd; color: #1a73e8; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: auto; text-transform: uppercase; font-weight: bold; }
+    body {
+      font-family: "Open Sans", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
 
-        /* Bottom Nav Bar */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: var(--white); display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #ddd; box-shadow: 0 -2px 5px rgba(0,0,0,0.05); }
-        .nav-item { text-align: center; text-decoration: none; color: #5f6368; font-size: 12px; flex: 1; }
-        .nav-item.active { color: var(--primary); }
-        .nav-icon { font-size: 20px; display: block; margin-bottom: 2px; }
-    </style>
+    h1, h2, h3, h4 {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: min(1140px, 92vw);
+      margin-inline: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.75rem;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-teal {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .btn-teal:hover {
+      background: var(--teal-dark);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Header */
+    .site-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      padding: 1.25rem 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--teal);
+    }
+
+    .nav-register {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0 12rem;
+      background: var(--dark) url("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1920&q=80") center / cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(52, 73, 94, 0.88) 0%, rgba(52, 73, 94, 0.45) 55%, transparent 100%);
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 560px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.75rem;
+      font-size: 1.05rem;
+    }
+
+    /* Overlapping cards */
+    .overlap-wrap {
+      position: relative;
+      margin-top: -6rem;
+      z-index: 10;
+      padding-bottom: 4rem;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .feature-cards {
+        grid-template-columns: 1fr;
+      }
+      .overlap-wrap {
+        margin-top: -3rem;
+      }
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 2rem 1.75rem;
+      border-radius: 4px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-card .icon {
+      width: 48px;
+      height: 48px;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .link-teal {
+      color: var(--teal);
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .link-teal:hover {
+      text-decoration: underline;
+    }
+
+    /* Dark CTA bar */
+    .cta-bar {
+      background: var(--dark);
+      padding: 2rem 0;
+    }
+
+    .cta-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-bar p {
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* Two-column sections */
+    .section-pad {
+      padding: 5rem 0;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .split {
+        grid-template-columns: 1fr;
+      }
+      .split.reverse-mobile .split-text {
+        order: 2;
+      }
+      .split.reverse-mobile .split-media {
+        order: 1;
+      }
+    }
+
+    .split h2 {
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      margin-bottom: 1rem;
+    }
+
+    .split p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .split-media img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Icon grid */
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      margin-bottom: 2.5rem;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 1100px) {
+      .icon-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .icon-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .icon-cell {
+      background: var(--white);
+      border: 1px solid #e8ecef;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-radius: 4px;
+      transition: box-shadow 0.2s;
+    }
+
+    .icon-cell:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .icon-cell svg {
+      width: 36px;
+      height: 36px;
+      color: var(--teal);
+      margin: 0 auto 0.75rem;
+    }
+
+    .icon-cell h4 {
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .icon-cell .btn {
+      padding: 0.45rem 1rem;
+      font-size: 0.75rem;
+    }
+
+    .center-actions {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    /* Creative service dark */
+    .creative {
+      background: var(--dark);
+      padding: 0;
+    }
+
+    .creative-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+    }
+
+    @media (max-width: 900px) {
+      .creative-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .creative-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .creative-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 140px;
+    }
+
+    .creative-text {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .creative-text h2 {
+      color: var(--white);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .creative-text p {
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Products */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid #e8ecef;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .product-card img {
+      aspect-ratio: 1;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .product-body {
+      padding: 1.25rem;
+    }
+
+    .product-body h3 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .price {
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    /* Testimonial */
+    .testimonial-split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .testimonial-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quote {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-split img {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    /* Portfolio tight grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    @media (max-width: 600px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .portfolio-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    /* Blog */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .blog-card {
+      background: var(--white);
+      border: 1px solid #e8ecef;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .blog-card img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+
+    .blog-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-body h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Contact */
+    .contact-section {
+      background: var(--light-bg);
+      padding: 4rem 0;
+    }
+
+    .contact-section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.25rem;
+      max-width: 720px;
+      margin-inline: auto;
+    }
+
+    .form-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .form-grid input,
+    .form-grid textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid #dce1e6;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .form-grid textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 3rem 0 1.5rem;
+    }
+
+    .footer-cols {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-cols {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--teal);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem;
+    }
+
+    .social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social a {
+      color: var(--white);
+      opacity: 0.85;
+    }
+
+    .social a:hover {
+      color: var(--teal);
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <h1>Sarkari Update Center</h1>
-</header>
-
-<div class="banner">
-    <div style="font-size: 1.2em; font-weight: bold;">Daily Test Series 2026</div>
-    <p style="font-size: 0.9em; opacity: 0.9;">आज का फ्री मॉक टेस्ट अभी शुरू करें!</p>
-    <a href="quiz.html" class="btn-quiz">START QUIZ ✍️</a>
-</div>
-
-<div class="container">
-    
-    <div class="section-title"><span></span> LATEST JOBS</div>
-    <div class="card">
-        <a href="#" class="job-item">
-            <div class="icon">S</div>
-            <span>SSC GD Constable 2026 Form</span>
-            <span class="new-badge">New</span>
-        </a>
-        <a href="#" class="job-item">
-            <div class="icon">R</div>
-            <span>Railway RPF SI Recruitment</span>
-        </a>
-        <a href="#" class="job-item">
-            <div class="icon">U</div>
-            <span>UP Police Constable Update</span>
-        </a>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#" class="logo">STAX</a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Pages</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Shop</a></li>
+      </ul>
+      <a href="#" class="btn btn-outline-light nav-register">Register</a>
     </div>
+  </header>
 
-    <div class="section-title"><span></span> RESULTS</div>
-    <div class="card">
-        <a href="#" class="job-item" style="border-left: 4px solid #4caf50;">
-            <div class="icon" style="color:#4caf50">R</div>
-            <span>Bihar BPSC Phase 3 Result</span>
-        </a>
-        <a href="#" class="job-item">
-            <div class="icon">C</div>
-            <span>CTET July 2026 Score Card</span>
-        </a>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>The Future of Web Production</h1>
+        <p>Build fast, flexible sites with a clean stack. We help teams ship polished experiences without the bloat.</p>
+        <a href="#" class="btn btn-teal">Get Started</a>
+      </div>
     </div>
+  </section>
 
-</div>
+  <div class="overlap-wrap">
+    <div class="container feature-cards">
+      <article class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 6h16M4 12h10M4 18h16" />
+        </svg>
+        <h3>Flexible</h3>
+        <p>Adapt layouts and content blocks to match your brand without fighting the framework.</p>
+        <a href="#" class="link-teal">Learn More →</a>
+      </article>
+      <article class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M3 9h18M9 21V9" />
+        </svg>
+        <h3>Platform</h3>
+        <p>One cohesive system for landing pages, blogs, and commerce-ready storefronts.</p>
+        <a href="#" class="link-teal">Learn More →</a>
+      </article>
+      <article class="feature-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+        </svg>
+        <h3>Performance</h3>
+        <p>Lightweight markup and assets so your pages load quickly on every device.</p>
+        <a href="#" class="link-teal">Learn More →</a>
+      </article>
+    </div>
+  </div>
 
-<!-- App-like Bottom Navigation -->
-<div class="bottom-nav">
-    <a href="index.html" class="nav-item active">
-        <span class="nav-icon">🏠</span>Home
-    </a>
-    <a href="#latest-jobs" class="nav-item">
-        <span class="nav-icon">💼</span>Jobs
-    </a>
-    <a href="quiz.html" class="nav-item">
-        <span class="nav-icon">📝</span>Quiz
-    </a>
-    <a href="#" class="nav-item">
-        <span class="nav-icon">👤</span>Contact
-    </a>
-</div>
+  <section class="cta-bar">
+    <div class="container cta-bar-inner">
+      <p>Ready to launch your next project with STAX?</p>
+      <a href="#" class="btn btn-teal">Buy Now</a>
+    </div>
+  </section>
 
+  <section class="section-pad">
+    <div class="container split">
+      <div class="split-media">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Dashboard mockup" />
+      </div>
+      <div class="split-text">
+        <h2>Built for one thing</h2>
+        <p>Focus on delivering value to your customers. Our patterns keep structure predictable so you can iterate on copy, imagery, and CTAs with confidence.</p>
+        <a href="#" class="btn btn-teal">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background: #fafbfc;">
+    <div class="container split reverse-mobile">
+      <div class="split-text">
+        <h2>Totally Custom Made</h2>
+        <p>Every section is composable. Swap columns, tune spacing, and align typography to your design system while keeping the same professional baseline.</p>
+        <a href="#" class="btn btn-teal">Get Started</a>
+      </div>
+      <div class="split-media">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Team working" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container">
+      <h2 class="section-title">On Stacking</h2>
+      <div class="icon-grid">
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <h4>Fast Setup</h4>
+          <button type="button" class="btn btn-teal">Buy Now</button>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h4>Secure</h4>
+          <button type="button" class="btn btn-teal">Buy Now</button>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <h4>Modular</h4>
+          <button type="button" class="btn btn-teal">Buy Now</button>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <h4>Docs</h4>
+          <button type="button" class="btn btn-teal">Buy Now</button>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h4>Support</h4>
+          <button type="button" class="btn btn-teal">Buy Now</button>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <h4>Analytics</h4>
+          <button type="button" class="btn btn-teal">Buy Now</button>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <h4>Responsive</h4>
+          <button type="button" class="btn btn-teal">Buy Now</button>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <h4>Layers</h4>
+          <button type="button" class="btn btn-teal">Buy Now</button>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <h4>Contact</h4>
+          <button type="button" class="btn btn-teal">Buy Now</button>
+        </div>
+        <div class="icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <h4>Pricing</h4>
+          <button type="button" class="btn btn-teal">Buy Now</button>
+        </div>
+      </div>
+      <div class="center-actions">
+        <a href="#" class="btn btn-teal">View All</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="creative">
+    <div class="creative-grid">
+      <div class="creative-gallery">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=400&q=80" alt="" />
+      </div>
+      <div class="creative-text">
+        <h2>Creative Service</h2>
+        <p>From concept to launch, we pair strategy with execution. Tell us your goals and we’ll shape visuals, messaging, and structure that convert.</p>
+        <a href="#" class="btn btn-teal">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container">
+      <h2 class="section-title">WooCommerce</h2>
+      <div class="products-grid">
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Product" />
+          <div class="product-body">
+            <h3>Minimal Watch</h3>
+            <p class="price">$89.00</p>
+            <a href="#" class="btn btn-teal" style="width: 100%;">Add to Cart</a>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Product" />
+          <div class="product-body">
+            <h3>Studio Headphones</h3>
+            <p class="price">$129.00</p>
+            <a href="#" class="btn btn-teal" style="width: 100%;">Add to Cart</a>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Product" />
+          <div class="product-body">
+            <h3>Runner Sneakers</h3>
+            <p class="price">$99.00</p>
+            <a href="#" class="btn btn-teal" style="width: 100%;">Add to Cart</a>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&q=80" alt="Product" />
+          <div class="product-body">
+            <h3>Classic Camera</h3>
+            <p class="price">$249.00</p>
+            <a href="#" class="btn btn-teal" style="width: 100%;">Add to Cart</a>
+          </div>
+        </article>
+      </div>
+      <div class="center-actions">
+        <a href="#" class="btn btn-teal">View All</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background: #fafbfc;">
+    <div class="container testimonial-split">
+      <div>
+        <p class="quote">“I love STAX — clean structure, fast handoff, and a look our clients actually compliment.”</p>
+        <a href="#" class="btn btn-teal">Read More</a>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80" alt="Client" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container">
+      <h2 class="section-title">Our Portfolio</h2>
+      <div class="portfolio-grid">
+        <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?w=600&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="" />
+        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80" alt="" />
+      </div>
+      <div class="center-actions">
+        <a href="#" class="btn btn-teal">View All</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background: #fafbfc;">
+    <div class="container">
+      <h2 class="section-title">News From The Blog</h2>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=800&q=80" alt="" />
+          <div class="blog-body">
+            <span class="tag">Design</span>
+            <h3>Why whitespace still wins in 2025</h3>
+            <a href="#" class="btn btn-teal">Read More</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80" alt="" />
+          <div class="blog-body">
+            <span class="tag">Business</span>
+            <h3>Shipping landing pages without the chaos</h3>
+            <a href="#" class="btn btn-teal">Read More</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80" alt="" />
+          <div class="blog-body">
+            <span class="tag">Tutorial</span>
+            <h3>Stacking sections for maintainable sites</h3>
+            <a href="#" class="btn btn-teal">Read More</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80" alt="" />
+          <div class="blog-body">
+            <span class="tag">Updates</span>
+            <h3>What’s new in our theme toolkit</h3>
+            <a href="#" class="btn btn-teal">Read More</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <h2>Prepared by Active Customers</h2>
+      <form class="form-grid" action="#" method="post">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="subject" placeholder="Subject" class="full" required />
+        <textarea name="message" placeholder="Message" class="full" required></textarea>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-teal">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>About</h4>
+          <ul>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Development</a></li>
+            <li><a href="#">Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 STAX. All rights reserved.</span>
+        <div class="social">
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
