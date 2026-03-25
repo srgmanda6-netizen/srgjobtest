@@ -263,6 +263,137 @@
       background: #fafbfc;
     }
 
+    .explore-lead-box {
+      background: linear-gradient(90deg, rgba(78, 205, 196, 0.20) 0%, rgba(37, 99, 235, 0.08) 100%);
+      border: 1px solid rgba(78, 205, 196, 0.35);
+      border-left: 7px solid var(--teal);
+      border-radius: 12px;
+      padding: 1.25rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .explore-lead-box::after {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -70px;
+      width: 220px;
+      height: 160px;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+      transform: rotate(12deg);
+      pointer-events: none;
+    }
+
+    .explore-sub-box {
+      background: linear-gradient(90deg, rgba(37, 99, 235, 0.20) 0%, rgba(78, 205, 196, 0.14) 100%);
+      border: 1px solid rgba(37, 99, 235, 0.28);
+      border-left: 7px solid #2563eb;
+      border-radius: 6px;
+      padding: 1.4rem 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.06);
+      margin-bottom: 2.0rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .explore-sub-copy {
+      font-family: "Noto Sans Devanagari", sans-serif;
+      flex: 1;
+      min-width: min(100%, 540px);
+    }
+
+    .explore-sub-title {
+      font-weight: 950;
+      color: var(--text);
+      font-size: clamp(1.12rem, 2.6vw, 1.45rem);
+      margin-bottom: 0.35rem;
+      line-height: 1.25;
+    }
+
+    .explore-sub-title .accent {
+      background: linear-gradient(90deg, #2563eb 0%, #4ecdc4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .explore-sub-desc {
+      color: var(--muted);
+      font-weight: 850;
+      font-size: 0.98rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .explore-sub-tagline {
+      margin-top: 0.55rem;
+      font-family: "Noto Sans Devanagari", sans-serif;
+      font-weight: 900;
+      color: rgba(37, 99, 235, 0.95);
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .explore-sub-cta {
+      padding: 0.95rem 1.4rem;
+      font-size: 1.02rem;
+      border-radius: 6px;
+      letter-spacing: 0.01em;
+      font-weight: 900;
+      box-shadow: 0 14px 36px rgba(37, 99, 235, 0.16);
+    }
+
+    .explore-sub-cta:hover {
+      box-shadow: 0 18px 46px rgba(37, 99, 235, 0.22);
+    }
+
+    @media (max-width: 720px) {
+      .explore-sub-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .explore-lead-copy {
+      font-family: "Noto Sans Devanagari", sans-serif;
+      flex: 1;
+      min-width: min(100%, 520px);
+    }
+
+    .explore-lead-title {
+      font-weight: 900;
+      color: var(--text);
+      font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+      margin-bottom: 0.35rem;
+      line-height: 1.25;
+    }
+
+    .explore-lead-desc {
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 720px) {
+      .explore-lead-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
     .quick h2 {
       text-align: center;
       font-size: clamp(1.5rem, 3vw, 2rem);
@@ -1147,6 +1278,41 @@
 
   <section class="quick">
     <div class="container">
+      <div class="explore-lead-box">
+        <div class="explore-lead-copy">
+          <div class="explore-lead-title">घर बैठे सभी सरकारी भर्तियों के फॉर्म भरें</div>
+          <p class="explore-lead-desc">
+            सही vacancy चुनें, सही documents तैयार करें और
+            Telegram पर expert support के साथ फॉर्म सबमिट करें।
+          </p>
+        </div>
+        <a
+          href="https://t.me/WereWolfByNight0"
+          class="btn btn-teal"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          यहाँ क्लिक करें
+        </a>
+      </div>
+
+      <div class="explore-sub-box">
+        <div class="explore-sub-copy">
+          <div class="explore-sub-title"><span class="accent">फ्री ऑनलाइन टेस्ट</span> – अपनी तैयारी को अभी जांचें!</div>
+          <p class="explore-sub-desc">
+            यहाँ आपको सभी सरकारी परीक्षाओं के लिए फ्री ऑनलाइन टेस्ट मिलेंगे।
+            रोजाना प्रैक्टिस करें, अपनी तैयारी मजबूत बनाएं और सफलता की ओर कदम बढ़ाएं।
+          </p>
+          <div class="explore-sub-tagline">आज की मेहनत ही आपकी कल की सफलता है</div>
+        </div>
+        <a
+          href="exams.html#upcoming-popular"
+          class="btn btn-teal explore-sub-cta"
+        >
+          अभी टेस्ट दें
+        </a>
+      </div>
+
       <h2>Explore</h2>
       <p>Government exams directory और भर्ती अपडेट्स — एक ही जगह।</p>
       <div class="quick-grid">
