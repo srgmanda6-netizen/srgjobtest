@@ -157,6 +157,23 @@
       max-width: 55rem;
     }
 
+    .hero-cta {
+      margin-top: 1rem;
+      display: inline-flex;
+      padding: 0.95rem 1.35rem;
+      font-size: 1rem;
+      font-weight: 900;
+      border-radius: 12px;
+      box-shadow: 0 14px 36px rgba(37, 99, 235, 0.18);
+      transform: translateY(0);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 46px rgba(37, 99, 235, 0.22);
+    }
+
     .search-row {
       margin-top: 1.25rem;
       display: grid;
@@ -851,11 +868,13 @@
   <main>
     <section class="page-head">
       <div class="container">
-        <h1>Government Exams Directory</h1>
+        <h1>फ्री ऑनलाइन टेस्ट – अपनी तैयारी को अभी जांचें!</h1>
         <p>
-          यहां SSC से लेकर State Govt, Banking, Teaching और DRDO तक के exams एक जगह मिलते हैं।
-          नीचे search, tabs और calendar से आप जल्दी shortlist कर सकते हैं।
+          यहाँ आपको सभी सरकारी परीक्षाओं के लिए फ्री ऑनलाइन टेस्ट मिलेंगे।
+          रोजाना प्रैक्टिस करें, अपनी तैयारी मजबूत बनाएं और सफलता की ओर कदम बढ़ाएं।
         </p>
+
+        <a href="#upcoming-popular" class="btn btn-teal hero-cta">आज की मेहनत ही आपकी कल की सफलता है – अभी टेस्ट दें</a>
 
         <div class="search-row">
           <div class="search" role="search" aria-label="Search exams">
